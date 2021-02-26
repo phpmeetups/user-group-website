@@ -7,6 +7,18 @@
         "laravel"
     ],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Bill Condo",
+            "email": "billcondo@gmail.com",
+            "homepage": "https://billcondo.com"
+        },
+        {
+            "name": "Vince Mitchell",
+            "email": "vincent.mitchell@gmail.com",
+            "homepage": "https://vincemitchell.me"
+        }
+    ],
     "require": {
         "php": "^7.4|^8.0",
         "fideloper/proxy": "^4.4",
@@ -21,7 +33,9 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "php-parallel-lint/php-parallel-lint": "^1.2",
+        "phpunit/phpunit": "^9.3.3",
+        "squizlabs/php_codesniffer": "^3.4"
     },
     "config": {
         "optimize-autoloader": true,
@@ -57,6 +71,17 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "lint": "parallel-lint app config routes",
+        "phpcs": "vendor/bin/phpcs",
+        "phpunit": "phpunit --verbose --colors=always",
+        "test": [
+            "@lint",
+            "@phpunit",
+            "@phpcs"
         ]
+    },
+    "support": {
+        "issues": "https://github.com/phpmeetups/user-group-website/issues"
     }
 }

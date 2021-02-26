@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ruleset  name="PHP_CodeSniffer">
+    <description>PHPCS configuration file.</description>
+    <file>app</file>
+
+    <exclude-pattern>*/TrustProxies/*</exclude-pattern>
+    <exclude-pattern>*/migrations/*</exclude-pattern>
+
+    <!-- ignore warnings and display ERRORS only -->
+    <arg value="np"/>
+
+    <!-- Our base rule: set to PSR12-->
+    <rule ref="PSR12"/>
+</ruleset>

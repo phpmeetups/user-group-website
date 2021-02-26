@@ -27,5 +27,6 @@
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
         <server name="TELESCOPE_ENABLED" value="false"/>
+        <server name="APP_KEY" value="base64:Mocge4AuflKi2fImWgl7UlRX0dU9UsmUHWGd9JczX2c="/>
     </php>
 </phpunit>

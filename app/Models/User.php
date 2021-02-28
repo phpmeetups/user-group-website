@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -41,4 +43,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Returns a collection of RSVPs, including both yes and no responses.
+     *
+     * @return HasMany
+     */
+    public function rsvps(): HasMany
+    {
+        return $this->hasMany(RSVP::class);
+    }
+
+    /**
+     * Returns a collection of the events the user is hosting, including those in the past.
+     *
+     * @return BelongsToMany
+     */
+    public function hosting(): BelongsToMany
+    {
+        return $this->belongsToMany(Event::class, EventHost::class);
+    }
 }

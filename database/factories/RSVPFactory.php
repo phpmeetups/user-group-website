@@ -27,8 +27,8 @@ class RSVPFactory extends Factory
             'event_id' => Event::class,
             'user_id' => User::class,
             'status' => $this->faker->randomElement([
-               RSVP::STATUS_YES,
-               RSVP::STATUS_NO,
+                RSVP::STATUS_YES,
+                RSVP::STATUS_NO,
             ]),
         ];
     }

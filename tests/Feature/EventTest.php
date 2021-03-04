@@ -21,8 +21,8 @@ class EventTest extends TestCase
         $event = Event::factory()->create([
             'title' => 'My fancy Event',
             'type' => Event::TYPE_PHYSICAL,
-            'starts_at' => Carbon::parse('today at 8pm'),
-            'ends_at' => Carbon::parse('today at 10pm'),
+            'starts_at' => Carbon::parse('2021-03-11 20:00'),
+            'ends_at' => Carbon::parse('2021-03-11 22:00'),
         ]);
 
         $response = $this->get('/events/' . $event->uuid);

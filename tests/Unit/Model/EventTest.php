@@ -3,7 +3,6 @@
 namespace Tests\Unit\Model;
 
 use App\Models\Event;
-use App\Models\EventVenue;
 use App\Models\RSVP;
 use App\Models\User;
 use App\Models\Venue;
@@ -68,4 +67,9 @@ class EventTest extends TestCase
         $this->assertEquals(3, $event->venues()->count());
     }
 
+    public function testAUuidIsSetWhenCreatingAnEvent()
+    {
+        $event = Event::factory()->create();
+        $this->assertNotNull($event->uuid);
+    }
 }

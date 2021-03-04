@@ -20,3 +20,7 @@ Route::get('/', function () {
 
 Route::get('events', [EventController::class, 'index']);
 Route::get('events/{event}', [EventController::class, 'show']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

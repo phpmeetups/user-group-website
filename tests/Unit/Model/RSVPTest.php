@@ -3,7 +3,6 @@
 namespace Tests\Unit\Model;
 
 use App\Models\Event;
-use App\Models\EventHost;
 use App\Models\RSVP;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

@@ -23,7 +23,7 @@ class EventFactory extends Factory
     {
         return [
             'featured_photo_url' => null,
-            'title' => $this->faker->title,
+            'title' => $this->faker->sentence(7),
             'starts_at' => $this->faker->dateTime('+5 hours'),
             'ends_at' => $this->faker->dateTime('+7 hours'),
             'rsvp_starts_at' => $this->faker->dateTime('+3 hours'),

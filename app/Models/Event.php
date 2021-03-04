@@ -76,4 +76,13 @@ class Event extends Model
     {
         return 'uuid';
     }
+
+    public function getFormattedStartsAtAttribute()
+    {
+        if ($this->starts_at->isCurrentYear()) {
+            return $this->starts_at->format('M j \a\t g:ia');
+        }
+
+        return $this->starts_at->format('M j, Y \a\t g:ia');
+    }
 }

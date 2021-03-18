@@ -23,6 +23,7 @@ class EventFactory extends Factory
     public function definition()
     {
         $base = CarbonImmutable::parse($this->faker->dateTimeBetween('-18 months', '+3 months'));
+
         return [
             'featured_photo_url' => null,
             'title' => $this->faker->sentence(7),

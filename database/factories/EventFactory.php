@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Event;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EventFactory extends Factory
@@ -21,18 +22,21 @@ class EventFactory extends Factory
      */
     public function definition()
     {
+        $base = CarbonImmutable::parse($this->faker->dateTimeBetween('-18 months', '+3 months'));
+
         return [
             'featured_photo_url' => null,
-            'title' => $this->faker->title,
-            'starts_at' => $this->faker->dateTime('+5 hours'),
-            'ends_at' => $this->faker->dateTime('+7 hours'),
-            'rsvp_starts_at' => $this->faker->dateTime('+3 hours'),
-            'rsvp_ends_at' => $this->faker->dateTime('+4 hours'),
+            'title' => $this->faker->sentence(7),
+            'starts_at' => $base,
+            'ends_at' => $base->addHours(2),
+            'rsvp_starts_at' => $base->subDays(7),
+            'rsvp_ends_at' => $base->subDays(1),
             'type' => $this->faker->randomElement([
                 Event::TYPE_PHYSICAL,
                 Event::TYPE_ONLINE,
                 Event::TYPE_HYBRID,
             ]),
+            'online_url' => $this->faker->url,
             'online_instructions' => $this->faker->optional()->text,
             'description' => $this->faker->text,
             'attendee_limit' => $this->faker->optional()->numberBetween(1, 1000),

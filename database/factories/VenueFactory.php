@@ -26,7 +26,7 @@ class VenueFactory extends Factory
     public function definition()
     {
         $address = new AddressDTO([
-            'street' => '411 Woody Hayes Dr, Columbus, OH 43210',
+            'street' => '411 Woody Hayes Dr',
             'city' => 'Columbus',
             'region' => 'Ohio',
             'country' => 'United States',
@@ -37,7 +37,7 @@ class VenueFactory extends Factory
 
         return [
             'name' => $this->faker->company,
-            'address' => $address->toString(),
+            'address' => $address->toArray(),
             'website' => $this->faker->optional()->url,
             'about' => $this->faker->optional()->text,
             'driving_directions' => $this->faker->optional()->text,

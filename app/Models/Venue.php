@@ -20,6 +20,10 @@ class Venue extends Model
         'driving_directions',
     ];
 
+    protected $casts = [
+        'address' => 'array',
+    ];
+
     /**
      * Events.
      *

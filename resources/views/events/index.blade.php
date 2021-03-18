@@ -1,13 +1,54 @@
 @extends('layouts.public')
 @section('content')
+<div class="bg-gray-100">
+    <div class="px-4 py-8 mx-auto max-w-7xl">
+        <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="lg:flex lg:items-center lg:justify-between">
+            <div class="flex-1 min-w-0">
+                <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+                    Events
+                </h1>
+                <div class="flex flex-col mt-1 sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+                </div>
+            </div>
+            <div class="flex mt-5 lg:mt-0 lg:ml-4">
+                <!-- Dropdown -->
+                <span class="relative ml-3 sm:hidden">
+                    <button type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="mobile-menu" aria-expanded="false" aria-haspopup="true">
+                        More
+                        <!-- Heroicon name: solid/chevron-down -->
+                        <svg class="w-5 h-5 ml-2 -mr-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    
+                    <!--
+                        Dropdown menu, show/hide based on menu state.
+                        
+                        Entering: "transition ease-out duration-200"
+                        From: "transform opacity-0 scale-95"
+                        To: "transform opacity-100 scale-100"
+                        Leaving: "transition ease-in duration-75"
+                        From: "transform opacity-100 scale-100"
+                        To: "transform opacity-0 scale-95"
+                    -->
+                    <div class="absolute right-0 w-48 py-1 mt-2 -mr-1 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="mobile-menu">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Edit</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">View</a>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="mx-auto max-w-7xl">
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="">
         @foreach($events as $event)
             <div class="flex items-center py-8">
                 <div class="h-32 mr-12">
-                    @if($event->featured_photo_url)
-                        <img class="object-cover w-64 h-32 rounded-lg shadow-lg" src="https://picsum.photos/seed/{{$event->id}}/200/300" alt="">
+                    @if($event->photo)
+                        <img class="object-cover w-64 h-32 rounded-lg shadow-lg" src="{{$event->photo}}" alt="">
                     @else
                         <div class="relative flex items-center justify-center w-64 h-32 overflow-hidden bg-gray-400 rounded-lg shadow-lg">
                             <svg class="w-24 h-24 text-gray-300 opacity-30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

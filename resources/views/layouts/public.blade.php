@@ -16,8 +16,9 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="bg-gray-100">
-        <div class="font-sans text-gray-900 antialiased my-12">
+    <body class="bg-white">
+        <div class="font-sans antialiased text-gray-900">
+            @include('partials.nav')
             @yield('content')
         </div>
     </body>

@@ -79,4 +79,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Event::class, EventHost::class);
     }
+
+    public function isAttendingEvent(Event $event)
+    {
+        return true;
+    }
 }

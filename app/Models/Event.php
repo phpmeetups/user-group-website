@@ -63,6 +63,16 @@ class Event extends Model
     }
 
     /**
+     * yesRsvps.
+     *
+     * @return HasMany
+     */
+    public function yesRsvps(): HasMany
+    {
+        return $this->hasMany(RSVP::class)->yes();
+    }
+
+    /**
      * Venue.
      *
      * @return BelongsToMany
@@ -84,5 +94,55 @@ class Event extends Model
         }
 
         return $this->starts_at->format('M j, Y \a\t g:ia');
+    }
+
+    public function getPhotoAttribute()
+    {
+        return $this->featured_photo_url ?? "https://picsum.photos/seed/{{$this->id}}/1600/900";
+    }
+
+    public function attendeeCount()
+    {
+        return $this->rsvps()->where('status', RSVP::STATUS_YES)->count();
+    }
+
+    public function isOnline(): bool
+    {
+        return $this->type == self::TYPE_ONLINE;
+    }
+
+    public function isHybrid(): bool
+    {
+        return $this->type == self::TYPE_HYBRID;
+    }
+
+    public function isPhysical(): bool
+    {
+        return $this->type == self::TYPE_PHYSICAL;
+    }
+
+    public function canRSVP(): bool
+    {
+        return now()->between($this->rsvp_starts_at, $this->rsvp_ends_at);
+    }
+
+    public function isUpcoming(): bool
+    {
+        return now()->isBefore($this->starts_at);
+    }
+
+    public function isHappeningNow(): bool
+    {
+        return now()->between($this->starts_at, $this->ends_at);
+    }
+
+    public function hasEnded(): bool
+    {
+        return now()->isAfter($this->ends_at);
+    }
+
+    public function isCanceled(): bool
+    {
+        return $this->status == self::STATUS_CANCELED;
     }
 }
